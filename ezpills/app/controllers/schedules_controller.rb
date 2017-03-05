@@ -28,14 +28,17 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
       respond_to do |format|
         if @schedule.save
-          #scheduler = Rufus::Scheduler.start_new
-          #@schedule.hour do |h|
-           # scheduler.cron '0 #{h} * * 1-7' do
-            #  puts 'spin'
-            #end
-          #end
+          
           format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
           format.json { render :show, status: :created, location: @schedule }
+          Thread.new do
+            @schedule.doses.each do |d|
+              Scheduler.every "#{d.dose_time}m" do
+                puts 'spin'
+              end
+            end
+          Scheduler.join
+          end
         else
           format.html { render :new }
           format.json { render json: @schedule.errors, status: :unprocessable_entity }

@@ -6,4 +6,3 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Schedule.create(name: 'drug1', duration: 30, quantity: 1, hour: [8,12,16,20])
