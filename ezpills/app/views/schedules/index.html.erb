@@ -2,6 +2,8 @@
 
 <h1>Schedules</h1>
 
+
+
 <table>
   <thead>
     <tr>
@@ -12,10 +14,7 @@
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
-        <td class='name_sch' width=48%><%= schedule.name %></td>
-        <td width=17%><%= link_to 'Show', schedule %></td>
-        <td width=17%><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
-        <td width=17%><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='name_sch' width=48%><%= link_to schedule.name, schedule %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +22,5 @@
 
 <br>
 
-<%= link_to 'New Schedule', new_schedule_path %>
+
+<%= link_to image_tag("pill_add.png", border: 0, height: 36), new_schedule_path %>

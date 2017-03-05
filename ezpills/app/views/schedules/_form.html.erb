@@ -25,6 +25,11 @@
   <%= f.text_field :quantity %>
   </div>
 
+  <div class="field">
+  <%= f.label :cylinderId, 'Dispenser' %>
+  <%= f.select :cylinderId, [1, 2] %>
+  </div>
+
   <% f.fields_for :doses do |ff| %>
     <%= render 'dose_fields', f: ff %>
   <% end %>
