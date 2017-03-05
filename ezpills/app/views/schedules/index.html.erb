@@ -11,6 +11,7 @@
 
   <tbody>
     <% @schedules.each do |schedule| %>
+      <%= schedule.name %>
       <tr>
         <td><%= link_to 'Show', schedule %></td>
         <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>

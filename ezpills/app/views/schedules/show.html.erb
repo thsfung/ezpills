@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+<div class="" >
+	<p>NAME: <%= @schedule.name %></p>
+	<p>DURATION: <%= @schedule.duration %></p>
+	<p>QUANTITY: <%= @schedule.quantity %></p>
+</div>
+
+<div class="" >
+	<p>HOURS: </p>
+	<ul>
+		<% @schedule.doses.each do |d| %>
+
+		<li>
+			<div class="li_sch">
+			<%= d.dose_time %>
+			</div>
+		</li>
+	<% end %>
+	</ul>
+	
+</div>
+
 <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
 <%= link_to 'Back', schedules_path %>

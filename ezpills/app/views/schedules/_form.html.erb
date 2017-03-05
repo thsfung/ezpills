@@ -10,6 +10,27 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+  <%= f.label :duration %>
+  <%= f.text_field :duration %>
+  </div>
+
+  <div class="field">
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+  </div>
+  
+  <% f.fields_for :doses do |ff| %>
+    <%= render 'dose_fields', f: ff %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'add dose', f, :doses %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

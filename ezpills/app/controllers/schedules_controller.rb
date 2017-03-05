@@ -10,6 +10,7 @@ class SchedulesController < ApplicationController
   # GET /schedules/1
   # GET /schedules/1.json
   def show
+    @schedule = Schedule.find(params[:id])
   end
 
   # GET /schedules/new
@@ -25,19 +26,21 @@ class SchedulesController < ApplicationController
   # POST /schedules.json
   def create
     @schedule = Schedule.new(schedule_params)
-
-    respond_to do |format|
-      if @schedule.save
-        scheduler = Rufus::Scheduler.start_new
-        scheduler.cron '0 12 * * 1-7' do
-          puts 'spin'
+      respond_to do |format|
+        if @schedule.save
+          #scheduler = Rufus::Scheduler.start_new
+          #@schedule.hour do |h|
+           # scheduler.cron '0 #{h} * * 1-7' do
+            #  puts 'spin'
+            #end
+          #end
+          format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+          format.json { render :show, status: :created, location: @schedule }
+        else
+          format.html { render :new }
+          format.json { render json: @schedule.errors, status: :unprocessable_entity }
         end
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
-        format.json { render :show, status: :created, location: @schedule }
-      else
-        format.html { render :new }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
-      end
+      
     end
   end
 
@@ -73,6 +76,6 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.fetch(:schedule, {})
+      params.require(:schedule).permit(:name, :duration, :quantity, :doses_attributes => [:id, :dose_time, :_destroy])
     end
 end
