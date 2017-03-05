@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ezpills</title>
+    <title>EzPills - DementiaHack17</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header> 
+  	<%= image_tag("ezpill_logo.png", :class => 'logo') %>
+  	<p>EZPills</p>
+  </header>
   <body>
-    <%= yield %>
+  <div id="mid1"> 
+  	<%= yield %>
+  </div>
+    
   </body>
+  <footer> 
+  	<p>Aaron Au, Tim Fung, Luis Tay Leon, Willy Tay Leon. 2017</p>
+  </footer>
 </html>

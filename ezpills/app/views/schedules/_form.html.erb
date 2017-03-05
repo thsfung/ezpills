@@ -24,12 +24,12 @@
   <%= f.label :quantity %>
   <%= f.text_field :quantity %>
   </div>
-  
+
   <% f.fields_for :doses do |ff| %>
     <%= render 'dose_fields', f: ff %>
   <% end %>
   <div class="links">
-    <%= link_to_add_association 'add dose', f, :doses %>
+    <%= link_to_add_association 'Add Dose', f, :doses %>
   </div>
 
   <div class="actions">

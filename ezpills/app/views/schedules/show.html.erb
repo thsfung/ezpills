@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<div class="" >
+<div class="show" >
 	<p>NAME: <%= @schedule.name %></p>
 	<p>DURATION: <%= @schedule.duration %></p>
 	<p>QUANTITY: <%= @schedule.quantity %></p>
 </div>
 
-<div class="" >
+<div class="show" >
 	<p>HOURS: </p>
 	<ul>
 		<% @schedule.doses.each do |d| %>
 
 		<li>
 			<div class="li_sch">
-			<%= d.dose_time %>
+			<p><%= d.dose_time %></p>
 			</div>
 		</li>
 	<% end %>
@@ -21,5 +21,5 @@
 	
 </div>
 
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Edit', edit_schedule_path(@schedule) %>  <p style='display:inline'>|</p>
 <%= link_to 'Back', schedules_path %>
